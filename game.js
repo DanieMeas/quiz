@@ -42,7 +42,6 @@ startGame = () => {
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
-  console.log(availableQuestions);
   getNewQuestion();
 };
 
@@ -63,8 +62,7 @@ getNewQuestion = () => {
   });
 
  availableQuestions.splice(questionIndex, 1);
-
- acceptingAnswers = true;
+  acceptingAnswers = true;
 };
 
 choices.forEach(choice => {
@@ -75,7 +73,12 @@ choices.forEach(choice => {
     acceptingAnswers = false;
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset['number'];
-    console.log(selectedAnswer);
+
+    const classToApply = 
+    selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+      console.log(classToApply);
+  
+   
     getNewQuestion();
 
   });
